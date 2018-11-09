@@ -9,10 +9,22 @@ export default class Bishop extends Piece {
 
     getAvailableMoves(board) {
         if(this.player === Player.WHITE){
+            const currentSquare = board.findPiece(this);
             let square = [];
-            square.push(new Square(0,1),new Square(1,2),new Square(3,4),new Square(4,5),new Square(5,6),new Square(6,7),new Square(0,5)
-            ,new Square(1,4),new Square(3,2),new Square(4,1),new Square(5,0));
+            for (let i = -7; i <=7; i++) {
+                let newSquare = new Square(i + currentSquare.row, i + currentSquare.col)
+                if(!newSquare.equals(currentSquare)&&newSquare.isOnBoard()) {
+                    square.push(newSquare);
+                }  
+            }
+            //backwards-diagonal
+            for (let i = -7; i <=7; i++) {
+                let newSquare = new Square(i + currentSquare.row, i + currentSquare.col - 2)
+                if(!newSquare.equals(currentSquare) && newSquare.isOnBoard()) {
+                    square.push(newSquare);
             return square;
+                }
+            }
         }
     }
 }
