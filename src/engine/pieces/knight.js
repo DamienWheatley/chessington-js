@@ -1,4 +1,6 @@
 import Piece from './piece';
+import Square from '../square';
+import Player from '../player';
 
 export default class Knight extends Piece {
     constructor(player) {
@@ -6,6 +8,10 @@ export default class Knight extends Piece {
     }
 
     getAvailableMoves(board) {
-        return new Array(0);
+        if(this.player === Player.WHITE){
+            
+            let square = [];
+            
+        }
     }
 }
